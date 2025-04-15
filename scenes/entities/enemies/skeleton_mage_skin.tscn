@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://p4ujr1eubsda"]
+
+[ext_resource type="PackedScene" uid="uid://c16qxxd7mhpfp" path="res://graphics/characters/skeleton mage/Skeleton_Mage.glb" id="1_ma3g0"]
+[ext_resource type="Script" uid="uid://bhu85wq4cstpr" path="res://scenes/entities/enemies/skeleton_mage_skin.gd" id="2_tex13"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tex13"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wxmjm"]
+animation = &"Walking_A"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kux6c"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ygtpc"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_71mwv"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tex13"]
+states/End/position = Vector2(740, 100)
+states/Idle/node = SubResource("AnimationNodeAnimation_tex13")
+states/Idle/position = Vector2(360, 100)
+states/Walking/node = SubResource("AnimationNodeAnimation_wxmjm")
+states/Walking/position = Vector2(525, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_kux6c"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_ygtpc"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_71mwv")]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tex13"]
+graph_offset = Vector2(-624, 69)
+nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_tex13")
+nodes/MoveStateMachine/position = Vector2(-40, 80)
+node_connections = [&"output", 0, &"MoveStateMachine"]
+
+[node name="SkeletonMageSkin" instance=ExtResource("1_ma3g0")]
+script = ExtResource("2_tex13")
+
+[node name="Skeleton_Mage_Hat" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(1, -2.20965e-22, 1.69407e-21, 2.20965e-22, 1, 0, -1.69407e-21, 3.58732e-43, 1, 0.000286102, 1.7841, -1.35973e-07)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_tex13")
+anim_player = NodePath("../AnimationPlayer")
