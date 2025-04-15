@@ -9,8 +9,8 @@
 script = ExtResource("1_uu705")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3, 0)
 shape = SubResource("CapsuleShape3D_uu705")
 
 [node name="NagonfordSkin" parent="." instance=ExtResource("1_fy5ax")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38, 0.475, 0.008)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

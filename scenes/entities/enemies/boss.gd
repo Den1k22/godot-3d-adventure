@@ -6,7 +6,7 @@ extends EnemyCommon
 @export var base_speed := 2.0
 
 var speed_modifier := 1.0
-var player_nearby: bool = true
+var player_nearby: bool = false
 
 func _physics_process(delta: float) -> void:
 	move_logic(delta)
