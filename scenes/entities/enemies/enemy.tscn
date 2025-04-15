@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://opxt7aoac1un"]
+
+[ext_resource type="Script" uid="uid://b3hkoo10h7a7s" path="res://scenes/entities/enemies/enemy.gd" id="1_yfmsl"]
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_yfmsl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]

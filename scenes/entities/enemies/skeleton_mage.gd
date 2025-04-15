@@ -1,4 +1,4 @@
-extends EnemyCommon
+extends Enemy
 
 @onready var skin = $SkeletonMageSkin
 @onready var player = get_node("../Entities/Player")

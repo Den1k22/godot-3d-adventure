@@ -1,2 +1,2 @@
 extends CharacterBody3D
-class_name EnemyCommon
+class_name Enemy

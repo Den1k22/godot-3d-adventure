@@ -6,7 +6,7 @@ extends EnemyCommon
 @export var base_speed := 2.0
 
 var speed_modifier := 1.0
-var player_nearby: bool = false
+var player_nearby: bool = true
 
 func _physics_process(delta: float) -> void:
 	move_logic(delta)
@@ -26,7 +26,8 @@ func move_logic(delta: float) -> void:
 		velocity_2d = velocity_2d.limit_length(base_speed) * speed_modifier
 		velocity.x = velocity_2d.x
 		velocity.z = velocity_2d.y
-		if position.distance_to(player.position) < 1.1:
+		print(position.distance_to(player.position))
+		if position.distance_to(player.position) < 2.1:
 			skin.set_move_state("Idle")
 		else:
 			skin.set_move_state("Walking")
