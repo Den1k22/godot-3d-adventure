@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://btqec4w3pm3s"]
 
 [ext_resource type="PackedScene" uid="uid://cockcnw1jlb46" path="res://scenes/entities/enemies/nagonford_skin.tscn" id="1_fy5ax"]
-[ext_resource type="Script" uid="uid://qffh3x4ngjqp" path="res://scenes/entities/enemies/boss.gd" id="1_uu705"]
+[ext_resource type="Script" uid="uid://qffh3x4ngjqp" path="res://scenes/entities/enemies/bossold.gd" id="1_uu705"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uu705"]
 
