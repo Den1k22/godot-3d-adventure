@@ -9,8 +9,8 @@ extends CharacterBody3D
 @export var base_speed := 2.0
 @export var speed = base_speed
 var speed_modifier := 1.0
-@export var notice_radius:= 30
-@export var attack_radius:= 3
+@export var notice_radius:= 30.0
+@export var attack_radius:= 3.0
 
 var rng = RandomNumberGenerator.new()
 

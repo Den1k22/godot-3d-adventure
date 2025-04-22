@@ -48,6 +48,7 @@ func _spin_transition(value:float) -> void:
 
 
 func _on_stop_spinning_area_body_entered(body: Node3D) -> void:
+	print(body)
 	if spinning:
 		await get_tree().create_timer(rng.randf_range(1.0, 2.0)).timeout
 		var tween = create_tween()
