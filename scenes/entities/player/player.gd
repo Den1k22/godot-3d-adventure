@@ -26,9 +26,12 @@ var defend := false:
 		if defend and not value:
 			skin.defend(false)
 		defend = value
-var weapon_active := false
+var weapon_active := true
 
 var double_jump = true
+
+func _ready() -> void:
+	skin.switch_weapon(weapon_active)
 
 func _physics_process(delta: float) -> void:
 	move_logic(delta)
@@ -101,9 +104,12 @@ func stop_movement(start_duration: float, end_duration: float):
 	tween.tween_property(self, "speed_modifier", 1.0, end_duration)
 	
 func hit():
-	skin.hit()
-	stop_movement(0.3, 0.3)
-	
+	if not $InvulTimer.time_left:
+		$InvulTimer.start()
+		skin.hit()
+		stop_movement(0.3, 0.3)
+
+
 func do_squash_and_stretch(value: float, duration: float = 0.1):
 	var tween = create_tween()
 	tween.tween_property(skin, "squash_and_stretch", value, duration)

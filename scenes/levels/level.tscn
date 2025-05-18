@@ -80,13 +80,11 @@ size = Vector3(10, 10, 1)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D4"]
 shape = SubResource("BoxShape3D_377w7")
 
-[node name="Boss" parent="." instance=ExtResource("2_bovvr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4755, 0.12854, -28.222)
-collision_layer = 1
-collision_mask = 1
-
 [node name="SkeletonWarior" parent="." instance=ExtResource("4_xb4v1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72599, 0.0804663, -6.87017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5926, 0.0804663, -27.9116)
 
 [node name="SkeletonMage" parent="." instance=ExtResource("3_b2cq8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.4405)
+
+[node name="Boss" parent="." instance=ExtResource("2_bovvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3469, 0, 0)

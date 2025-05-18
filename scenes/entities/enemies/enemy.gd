@@ -13,6 +13,11 @@ var speed_modifier := 1.0
 @export var attack_radius:= 3.0
 
 var rng = RandomNumberGenerator.new()
+var squash_and_stretch := 1.0:
+	set(value):
+		squash_and_stretch = value
+		var negative = 1.0 + (1.0 - squash_and_stretch)
+		skin.scale = Vector3(negative, squash_and_stretch, negative)
 
 func move_to_player(delta):
 	if position.distance_to(player.position) < notice_radius:
@@ -35,3 +40,15 @@ func stop_movement(start_duration: float, end_duration: float):
 	var tween = create_tween()
 	tween.tween_property(self, "speed_modifier", 0.0, start_duration)
 	tween.tween_property(self, "speed_modifier", 1.0, end_duration)
+
+
+func hit():
+	if not $Timers/InvulTimer.time_left:
+		$Timers/InvulTimer.start()
+		do_squash_and_stretch(1.2, 0.15)
+
+
+func do_squash_and_stretch(value: float, duration: float = 0.1):
+	var tween = create_tween()
+	tween.tween_property(self, "squash_and_stretch", value, duration)
+	tween.tween_property(self, "squash_and_stretch", 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)

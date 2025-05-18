@@ -12,3 +12,7 @@ func _on_attack_timer_timeout() -> void:
 
 func melee_attack_animation() -> void:
 	$AnimationTree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
+func can_damage(value: bool) -> void:
+	$Skin/Rig/Skeleton3D/BoneAttachment3D/BoneWeapon.can_damage = value

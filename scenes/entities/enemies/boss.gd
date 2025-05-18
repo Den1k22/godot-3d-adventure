@@ -7,11 +7,13 @@ const simple_attacks = {
 }
 @export var spin_speed = 6.0
 var spinning := false
+var can_damage_toggle := false
 
+func _process(_delta: float) -> void:
+	attack_logic()
 
 func _physics_process(delta: float) -> void:
 	move_to_player(delta)
-
 
 func _on_attack_timer_timeout() -> void:
 	$Timers/AttackTimer.wait_time = rng.randf_range(4.0, 5.5)
@@ -41,6 +43,7 @@ func spin_attack_animation() -> void:
 	tween.tween_method(_spin_transition, 0.0, 1.0, 0.3)
 	$Timers/AttackTimer.stop()
 	spinning = true
+	can_damage(true)
 
 
 func _spin_transition(value:float) -> void:
@@ -55,4 +58,23 @@ func _on_stop_spinning_area_body_entered(body: Node3D) -> void:
 		tween.tween_property(self, "speed", base_speed, 0.5)
 		tween.tween_method(_spin_transition, 1.0, 0.0, 0.3)
 		spinning = false
+		can_damage(false)
 		$Timers/AttackTimer.start()
+
+
+func hit() -> void:
+	if not $Timers/InvulTimer.time_left:
+		print("Boss was hit")
+		$Timers/InvulTimer.start()
+
+
+func can_damage(value: bool):
+	can_damage_toggle = value
+
+
+func attack_logic() -> void:
+	if can_damage_toggle:
+		var collider = $Skin/Rig/Skeleton3D/Nagonford_Axe/Nagonford_Axe/RayCast3D.get_collider()
+		if collider and "hit" in collider:
+			print(collider)
+			collider.hit()
