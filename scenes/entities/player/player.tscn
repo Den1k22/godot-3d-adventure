@@ -23,30 +23,30 @@ max_limit_x = -0.2
 [node name="GodetteSkin" parent="." instance=ExtResource("3_58kc7")]
 
 [node name="Skeleton3D" parent="GodetteSkin/Rig" index="0"]
-bones/1/position = Vector3(0, 0.379686, 0)
-bones/4/rotation = Quaternion(-0.55228, -0.0631564, -0.657622, 0.50846)
-bones/5/rotation = Quaternion(1.81507e-08, -3.63883e-08, -0.474334, 0.880345)
-bones/7/rotation = Quaternion(-0.316549, -0.328897, 0.133434, 0.87967)
-bones/8/rotation = Quaternion(0.00164997, 0.00164997, -0.701023, 0.713135)
-bones/9/rotation = Quaternion(-0.611787, 0.083234, 0.63035, 0.470583)
-bones/10/rotation = Quaternion(1.77889e-09, 4.67602e-08, 0.498499, 0.86689)
-bones/12/rotation = Quaternion(-0.315121, 0.302927, -0.215125, 0.873301)
-bones/13/rotation = Quaternion(0.00424717, 0.00500254, 0.702676, 0.71148)
-bones/15/rotation = Quaternion(0.991823, 0.0831516, 0.0768746, 0.0588546)
-bones/16/rotation = Quaternion(0.320662, 6.08563e-08, -2.19506e-07, 0.947194)
-bones/17/rotation = Quaternion(-0.582593, -0.204862, 0.063584, 0.783948)
-bones/18/rotation = Quaternion(2.01135e-05, 0.920176, -0.391506, -4.50625e-06)
-bones/19/rotation = Quaternion(0.99424, -0.0316818, 0.0305066, 0.0977354)
-bones/20/rotation = Quaternion(0.3737, -6.09054e-08, 2.61028e-07, 0.92755)
-bones/21/rotation = Quaternion(-0.612204, 0.113552, -0.0172329, 0.782314)
-bones/38/position = Vector3(0.520841, 0.767981, -0.0576374)
-bones/40/position = Vector3(-0.510844, 0.767981, 0.0597369)
+bones/1/position = Vector3(0, 0.380072, 0)
+bones/4/rotation = Quaternion(-0.552396, -0.0632816, -0.657848, 0.508026)
+bones/5/rotation = Quaternion(1.98024e-08, -3.3677e-08, -0.473692, 0.88069)
+bones/7/rotation = Quaternion(-0.316519, -0.328641, 0.133233, 0.879807)
+bones/8/rotation = Quaternion(0.00164634, 0.00164634, -0.701036, 0.713122)
+bones/9/rotation = Quaternion(-0.611905, 0.083347, 0.630532, 0.470164)
+bones/10/rotation = Quaternion(-4.77419e-09, 4.66482e-08, 0.497888, 0.867241)
+bones/12/rotation = Quaternion(-0.315074, 0.302642, -0.214914, 0.873469)
+bones/13/rotation = Quaternion(0.0042341, 0.00498715, 0.70269, 0.711466)
+bones/15/rotation = Quaternion(0.991898, 0.0831414, 0.076796, 0.057695)
+bones/16/rotation = Quaternion(0.31761, 6.16638e-08, -2.16073e-07, 0.948221)
+bones/17/rotation = Quaternion(-0.581, -0.205006, 0.0630643, 0.785134)
+bones/18/rotation = Quaternion(2.20516e-05, 0.920177, -0.391502, -4.94464e-06)
+bones/19/rotation = Quaternion(0.994341, -0.0316175, 0.0305343, 0.0967211)
+bones/20/rotation = Quaternion(0.371073, -6.0918e-08, 2.59083e-07, 0.928604)
+bones/21/rotation = Quaternion(-0.610793, 0.113588, -0.0169945, 0.783416)
+bones/38/position = Vector3(0.520841, 0.768022, -0.0576374)
+bones/40/position = Vector3(-0.510844, 0.768022, 0.0597369)
 
 [node name="RightHandSlot" parent="GodetteSkin/Rig/Skeleton3D" index="6"]
-transform = Transform3D(0.00300161, -0.162797, -0.986655, -0.999921, -0.0124558, -0.000985989, -0.0121295, 0.98658, -0.162822, -0.490936, 0.619412, 0.105073)
+transform = Transform3D(0.00299296, -0.162756, -0.986661, -0.999921, -0.0124188, -0.000983869, -0.0120935, 0.986588, -0.162781, -0.49095, 0.619536, 0.105033)
 
 [node name="LeftHandSlot" parent="GodetteSkin/Rig/Skeleton3D" index="7"]
-transform = Transform3D(-2.84519e-07, 0.262864, 0.964833, 0.999841, -0.0171271, 0.00466777, 0.0177521, 0.96468, -0.262823, 0.507384, 0.615346, -0.0200736)
+transform = Transform3D(7.59494e-07, 0.262863, 0.964833, 0.999842, -0.0170907, 0.00465681, 0.0177141, 0.964681, -0.262822, 0.50739, 0.615477, -0.0201138)
 
 [node name="InvulTimer" type="Timer" parent="."]
 one_shot = true

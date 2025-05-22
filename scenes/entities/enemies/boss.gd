@@ -77,3 +77,10 @@ func attack_logic() -> void:
 		if collider and "hit" in collider:
 			print(collider)
 			collider.hit()
+
+
+func shoot_fireball() -> void:
+	var pos = $Skin/Rig/Skeleton3D/Nagonford_Axe/Nagonford_Axe/Marker3D.global_position
+	var direction = (player.position - position).normalized()
+	var direction_2d = Vector2(direction.x, direction.z)
+	cast_spell.emit("fireball", pos, direction_2d, 3.0)

@@ -30,6 +30,8 @@ var weapon_active := true
 
 var double_jump = true
 
+signal cast_spell(type: String, pos: Vector3, direction: Vector2, size: float)
+
 func _ready() -> void:
 	skin.switch_weapon(weapon_active)
 
@@ -55,7 +57,7 @@ func move_logic(delta: float) -> void:
 		velocity.z = velocity_2d.y
 		skin.set_move_state("Running")
 		var target_angle = -movement_input.angle() + PI/2
-		skin.rotation.y = rotate_toward(skin.rotation.y, target_angle, 6.0 * delta)  
+		skin.rotation.y = rotate_toward(skin.rotation.y, target_angle, 6.0 * delta)
 	else:
 		velocity_2d = velocity_2d.move_toward(Vector2.ZERO, base_speed * 4.0 * delta)
 		velocity.x = velocity_2d.x
@@ -114,3 +116,8 @@ func do_squash_and_stretch(value: float, duration: float = 0.1):
 	var tween = create_tween()
 	tween.tween_property(skin, "squash_and_stretch", value, duration)
 	tween.tween_property(skin, "squash_and_stretch", 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)
+
+
+func shoot_fireball(pos: Vector3) -> void:
+	var direction = Vector2.RIGHT.rotated(-skin.rotation.y  + PI/2)
+	cast_spell.emit("fireball", pos, direction, 1.0)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3wxsi70cmm4j"]
+
+[ext_resource type="Script" uid="uid://xapokn2mb7vj" path="res://scenes/vfx/fireball.gd" id="1_y0ij2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0ij2"]
+albedo_color = Color(1, 0.447059, 0.0431373, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d8xov"]
+
+[node name="Fireball" type="Area3D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_y0ij2")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00344133, 2.38419e-07, 0.000883341)
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_y0ij2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_d8xov")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

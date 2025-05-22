@@ -12,6 +12,9 @@ var speed_modifier := 1.0
 @export var notice_radius:= 30.0
 @export var attack_radius:= 3.0
 
+@warning_ignore("unused_signal")
+signal cast_spell(type: String, pos: Vector3, direction: Vector2, size: float)
+
 var rng = RandomNumberGenerator.new()
 var squash_and_stretch := 1.0:
 	set(value):
