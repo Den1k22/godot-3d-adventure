@@ -17,6 +17,7 @@ extends CharacterBody3D
 var speed_modifier := 1.0
 
 @onready var camera = $CameraController/Camera3D
+@onready var ui = $UI
 
 var movement_input := Vector2.ZERO
 var defend := false:
@@ -26,14 +27,44 @@ var defend := false:
 		if defend and not value:
 			skin.defend(false)
 		defend = value
-var weapon_active := true
+var weapon_active := true:
+	set(value):
+		weapon_active = value
+		ui.show_spells(!weapon_active)
+var health = 5:
+	set(value):
+		ui.update_health(value, value - health)
+		health = value
+		if health <= 0:
+			get_tree().quit()
+var energy = 100:
+	set(value):
+		energy = min(value, 100)
+		ui.update_energy(energy)
+var stamina = 100:
+	set(value):
+		ui.update_stamina(stamina, value)
+		if stamina == 100 and value < 100:
+			ui.change_stamina_alpha(1.0)
+		if value == 100:
+			ui.change_stamina_alpha(0.0)
+		stamina = clamp(value, 0, 100)
+
+
+enum spells {FIREBALL, HEAL}
+var current_spell = spells.FIREBALL
 
 var double_jump = true
 
 signal cast_spell(type: String, pos: Vector3, direction: Vector2, size: float)
 
 func _ready() -> void:
+	weapon_active = true
+	energy = 100
+	stamina = 100
 	skin.switch_weapon(weapon_active)
+	ui.setup(health)
+
 
 func _physics_process(delta: float) -> void:
 	move_logic(delta)
@@ -67,15 +98,17 @@ func move_logic(delta: float) -> void:
 
 func jump_logic(delta: float) -> void:
 	if is_on_floor():
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") and stamina >= 20:
 			double_jump = true
 			velocity.y = -jump_velocity
 			do_squash_and_stretch(1.2, 0.15)
-	elif(double_jump):
+			stamina -= 20
+	elif(double_jump and stamina >= 20):
 		if Input.is_action_just_pressed("jump"):
 			double_jump = false
 			velocity.y = -jump_velocity
 			do_squash_and_stretch(1.2, 0.15)
+			stamina -= 20
 			
 	if not is_on_floor():
 		skin.set_move_state("Jump_Idle")
@@ -89,8 +122,10 @@ func ability_logic() -> void:
 		if weapon_active:
 			skin.attack()
 		else:
-			skin.cast_spell()
-			stop_movement(0.3, 0.8)
+			if energy >= 20:
+				skin.cast_spell()
+				stop_movement(0.3, 0.8)
+				energy -= 20
 		
 	defend = Input.is_action_pressed("block")
 	
@@ -98,18 +133,23 @@ func ability_logic() -> void:
 		weapon_active = not weapon_active
 		skin.switch_weapon(weapon_active)
 		do_squash_and_stretch(0.9, 0.15)
+	if Input.is_action_just_pressed("switch spell") and not skin.attacking:
+		current_spell = spells[spells.keys()[(int(current_spell) + 1) % len(spells)]]
+		ui.update_spell(spells, current_spell)
 
 
 func stop_movement(start_duration: float, end_duration: float):
 	var tween = create_tween()
 	tween.tween_property(self, "speed_modifier", 0.0, start_duration)
 	tween.tween_property(self, "speed_modifier", 1.0, end_duration)
-	
+
+
 func hit():
 	if not $InvulTimer.time_left:
-		$InvulTimer.start()
 		skin.hit()
 		stop_movement(0.3, 0.3)
+		health -= 1
+		$InvulTimer.start()
 
 
 func do_squash_and_stretch(value: float, duration: float = 0.1):
@@ -118,6 +158,17 @@ func do_squash_and_stretch(value: float, duration: float = 0.1):
 	tween.tween_property(skin, "squash_and_stretch", 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)
 
 
-func shoot_fireball(pos: Vector3) -> void:
-	var direction = Vector2.RIGHT.rotated(-skin.rotation.y  + PI/2)
-	cast_spell.emit("fireball", pos, direction, 1.0)
+func shoot_magic(pos: Vector3) -> void:
+	if current_spell == spells.FIREBALL:
+		var direction = Vector2.RIGHT.rotated(-skin.rotation.y  + PI/2)
+		cast_spell.emit("fireball", pos, direction, 1.0)
+	if current_spell == spells.HEAL:
+		health += 1
+
+
+func _on_energy_recovery_timeout() -> void:
+	energy += 1
+
+
+func _on_stamina_recovery_timeout() -> void:
+	stamina += 1

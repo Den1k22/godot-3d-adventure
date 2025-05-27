@@ -1,5 +1,10 @@
 extends Enemy
 
+
+func _ready() -> void:
+	health = 3
+
+
 func _physics_process(delta: float) -> void:
 	move_to_player(delta)
 

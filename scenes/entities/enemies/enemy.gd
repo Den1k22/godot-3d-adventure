@@ -11,6 +11,11 @@ extends CharacterBody3D
 var speed_modifier := 1.0
 @export var notice_radius:= 30.0
 @export var attack_radius:= 3.0
+@export var health = 5:
+	set(value):
+		health = value
+		if health <= 0:
+			queue_free()
 
 @warning_ignore("unused_signal")
 signal cast_spell(type: String, pos: Vector3, direction: Vector2, size: float)
@@ -49,6 +54,7 @@ func hit():
 	if not $Timers/InvulTimer.time_left:
 		$Timers/InvulTimer.start()
 		do_squash_and_stretch(1.2, 0.15)
+		health -= 1
 
 
 func do_squash_and_stretch(value: float, duration: float = 0.1):

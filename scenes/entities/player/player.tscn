@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2220hvs0u357"]
+[gd_scene load_steps=6 format=3 uid="uid://c2220hvs0u357"]
 
 [ext_resource type="Script" uid="uid://df66t8w63hiok" path="res://scenes/entities/player/player.gd" id="1_1hmtu"]
 [ext_resource type="PackedScene" uid="uid://q6ireqhd0sfm" path="res://scenes/entities/player/camera_controller.tscn" id="2_635qg"]
 [ext_resource type="PackedScene" uid="uid://cyhvy57clfhut" path="res://scenes/entities/player/godette_skin.tscn" id="3_58kc7"]
+[ext_resource type="PackedScene" uid="uid://dafraf5sup2hy" path="res://scenes/entities/player/ui.tscn" id="4_nh4ur"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1hmtu"]
 
@@ -23,33 +24,47 @@ max_limit_x = -0.2
 [node name="GodetteSkin" parent="." instance=ExtResource("3_58kc7")]
 
 [node name="Skeleton3D" parent="GodetteSkin/Rig" index="0"]
-bones/1/position = Vector3(0, 0.380072, 0)
-bones/4/rotation = Quaternion(-0.552396, -0.0632816, -0.657848, 0.508026)
-bones/5/rotation = Quaternion(1.98024e-08, -3.3677e-08, -0.473692, 0.88069)
-bones/7/rotation = Quaternion(-0.316519, -0.328641, 0.133233, 0.879807)
-bones/8/rotation = Quaternion(0.00164634, 0.00164634, -0.701036, 0.713122)
-bones/9/rotation = Quaternion(-0.611905, 0.083347, 0.630532, 0.470164)
-bones/10/rotation = Quaternion(-4.77419e-09, 4.66482e-08, 0.497888, 0.867241)
-bones/12/rotation = Quaternion(-0.315074, 0.302642, -0.214914, 0.873469)
-bones/13/rotation = Quaternion(0.0042341, 0.00498715, 0.70269, 0.711466)
-bones/15/rotation = Quaternion(0.991898, 0.0831414, 0.076796, 0.057695)
-bones/16/rotation = Quaternion(0.31761, 6.16638e-08, -2.16073e-07, 0.948221)
-bones/17/rotation = Quaternion(-0.581, -0.205006, 0.0630643, 0.785134)
-bones/18/rotation = Quaternion(2.20516e-05, 0.920177, -0.391502, -4.94464e-06)
-bones/19/rotation = Quaternion(0.994341, -0.0316175, 0.0305343, 0.0967211)
-bones/20/rotation = Quaternion(0.371073, -6.0918e-08, 2.59083e-07, 0.928604)
-bones/21/rotation = Quaternion(-0.610793, 0.113588, -0.0169945, 0.783416)
-bones/38/position = Vector3(0.520841, 0.768022, -0.0576374)
-bones/40/position = Vector3(-0.510844, 0.768022, 0.0597369)
+bones/1/position = Vector3(0, 0.390979, 0)
+bones/4/rotation = Quaternion(-0.558984, -0.0614228, -0.646466, 0.515602)
+bones/5/rotation = Quaternion(2.00914e-08, -4.08885e-08, -0.49055, 0.871413)
+bones/7/rotation = Quaternion(-0.32028, -0.325373, 0.143538, 0.878038)
+bones/8/rotation = Quaternion(0.000351129, 0.000351097, -0.705817, 0.708394)
+bones/9/rotation = Quaternion(-0.617509, 0.0812802, 0.620221, 0.476867)
+bones/10/rotation = Quaternion(2.05424e-08, 5.54445e-08, 0.513957, 0.857816)
+bones/12/rotation = Quaternion(-0.318534, 0.300339, -0.225152, 0.870425)
+bones/13/rotation = Quaternion(0.000628147, 0.000739863, 0.706455, 0.707757)
+bones/15/rotation = Quaternion(0.993623, 0.0835688, 0.0739019, 0.0163763)
+bones/16/rotation = Quaternion(0.209767, 6.47863e-08, -1.37265e-07, 0.977751)
+bones/17/rotation = Quaternion(-0.524927, -0.209082, 0.0457943, 0.823795)
+bones/18/rotation = Quaternion(8.88264e-05, 0.920237, -0.391361, -2.00487e-05)
+bones/19/rotation = Quaternion(0.997074, -0.0296699, 0.0314261, 0.0630515)
+bones/20/rotation = Quaternion(0.2843, -6.40526e-08, 1.96622e-07, 0.958735)
+bones/21/rotation = Quaternion(-0.564508, 0.114446, -0.00948066, 0.8174)
+bones/38/position = Vector3(0.520841, 0.785536, -0.0576374)
+bones/40/position = Vector3(-0.510844, 0.785536, 0.0597369)
 
 [node name="RightHandSlot" parent="GodetteSkin/Rig/Skeleton3D" index="6"]
-transform = Transform3D(0.00299296, -0.162756, -0.986661, -0.999921, -0.0124188, -0.000983869, -0.0120935, 0.986588, -0.162781, -0.49095, 0.619536, 0.105033)
+transform = Transform3D(0.000435045, -0.151807, -0.98841, -0.999997, -0.00184119, -0.000156536, -0.00179666, 0.988408, -0.151808, -0.491065, 0.638036, 0.106297)
 
 [node name="LeftHandSlot" parent="GodetteSkin/Rig/Skeleton3D" index="7"]
-transform = Transform3D(7.59494e-07, 0.262863, 0.964833, 0.999842, -0.0170907, 0.00465681, 0.0177141, 0.964681, -0.262822, 0.50739, 0.615477, -0.0201138)
+transform = Transform3D(7.40343e-07, 0.262863, 0.964833, 0.999992, -0.00364473, 0.000993243, 0.00377808, 0.964825, -0.262862, 0.507718, 0.633762, -0.0188242)
 
 [node name="InvulTimer" type="Timer" parent="."]
+wait_time = 0.8
 one_shot = true
+
+[node name="EnergyRecovery" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="StaminaRecovery" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="UI" parent="." instance=ExtResource("4_nh4ur")]
+
+[connection signal="timeout" from="EnergyRecovery" to="." method="_on_energy_recovery_timeout"]
+[connection signal="timeout" from="StaminaRecovery" to="." method="_on_stamina_recovery_timeout"]
 
 [editable path="GodetteSkin"]
 [editable path="GodetteSkin/Rig/Skeleton3D/RightHandSlot/wand2"]
