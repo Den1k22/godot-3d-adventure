@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpvwg4rm8qbs7"]
+[gd_scene load_steps=11 format=3 uid="uid://dpvwg4rm8qbs7"]
 
 [ext_resource type="PackedScene" uid="uid://dwk3o375xq28u" path="res://scenes/levels/level.tscn" id="1_wail4"]
 [ext_resource type="MeshLibrary" uid="uid://bkk033j2u1pvy" path="res://graphics/environment/dungeon/dungeon_col.tres" id="2_srduu"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://chw0pqeh5pgfm" path="res://graphics/environment/dungeon objects/stool.glb" id="6_c7dwr"]
 [ext_resource type="PackedScene" uid="uid://ben46777uu8eu" path="res://graphics/environment/dungeon objects/table.glb" id="7_ohg4i"]
 [ext_resource type="PackedScene" uid="uid://b7wf3jucxaf1v" path="res://graphics/environment/dungeon objects/torch.glb" id="8_b4io3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyxho"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q0ye3"]
+material = SubResource("StandardMaterial3D_wyxho")
+size = Vector3(6, 4, 1)
 
 [node name="Dungeon" instance=ExtResource("1_wail4")]
 
@@ -51,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.7469
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98925, 1.02, 15.9146)
 
 [node name="stairs" parent="Environment/Objects" index="3" instance=ExtResource("5_06kf8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.38908, 1.02, 6.68975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.38908, 1.02, 6.22108)
 
 [node name="stool" parent="Environment/Objects" index="4" instance=ExtResource("6_c7dwr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02945, 1.0292, 27.5108)
@@ -73,3 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.94007, 1.02, 69.8254)
 
 [node name="pillar5" parent="Environment/Objects" index="10" instance=ExtResource("4_q0ye3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2941, 1.02, 69.8254)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Objects" index="11"]
+transform = Transform3D(0.903681, 0, 0, 0, 1, 0, 0, 0, 1, -6.40205, 6.40064, 6.04117)
+mesh = SubResource("BoxMesh_q0ye3")
