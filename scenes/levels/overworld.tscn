@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://gvub35osd2gs"]
+[gd_scene load_steps=33 format=3 uid="uid://gvub35osd2gs"]
 
 [ext_resource type="PackedScene" uid="uid://dwk3o375xq28u" path="res://scenes/levels/level.tscn" id="1_fl1qg"]
 [ext_resource type="PackedScene" uid="uid://d2p3exb2pd87u" path="res://scenes/levels/overworld_skin.tscn" id="2_l7h5l"]
@@ -27,6 +27,39 @@
 [ext_resource type="PackedScene" uid="uid://dhsubxkk83ax8" path="res://scenes/levels/castle.tscn" id="26_uftyr"]
 [ext_resource type="PackedScene" uid="uid://bip3if7u8r86l" path="res://scenes/levels/bridge.tscn" id="26_xahul"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xahul"]
+sky_top_color = Color(0.167631, 0.469534, 0.699767, 1)
+sky_horizon_color = Color(0.579271, 0.657484, 0.722759, 1)
+ground_bottom_color = Color(0.163133, 0.174082, 0.204951, 1)
+ground_horizon_color = Color(0.579271, 0.657484, 0.722759, 1)
+
+[sub_resource type="Sky" id="Sky_uftyr"]
+sky_material = SubResource("ProceduralSkyMaterial_xahul")
+
+[sub_resource type="Environment" id="Environment_ms2oj"]
+background_mode = 1
+background_color = Color(0.482353, 0.509804, 0.901961, 1)
+sky = SubResource("Sky_uftyr")
+ambient_light_source = 2
+ambient_light_color = Color(0.968627, 0.835294, 0.858824, 1)
+ambient_light_energy = 0.6
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.509804, 0.87451, 0.890196, 1)
+fog_density = 0.001
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xahul"]
+dof_blur_far_distance = 128.0
+dof_blur_far_transition = 256.0
+dof_blur_amount = 0.06
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2yut"]
 albedo_color = Color(0.0470588, 0.611765, 1, 1)
 
@@ -35,6 +68,17 @@ material = SubResource("StandardMaterial3D_y2yut")
 size = Vector2(600, 300)
 
 [node name="Overworld" instance=ExtResource("1_fl1qg")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_ms2oj")
+camera_attributes = SubResource("CameraAttributesPractical_xahul")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.941176, 0.941176, 0.941176, 1)
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 3.5
 
 [node name="Player" parent="Entities" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.6894, -94.2489)

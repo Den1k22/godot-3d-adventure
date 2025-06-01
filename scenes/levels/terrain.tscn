@@ -130,6 +130,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.82786, 0)
 data_directory = "res://scenes/levels"
 material = SubResource("Terrain3DMaterial_l7kxa")
 assets = SubResource("Terrain3DAssets_qkyix")
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.43357)
 top_level = true
 metadata/_edit_lock_ = true

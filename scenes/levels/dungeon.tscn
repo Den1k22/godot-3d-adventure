@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpvwg4rm8qbs7"]
+[gd_scene load_steps=14 format=3 uid="uid://dpvwg4rm8qbs7"]
 
 [ext_resource type="PackedScene" uid="uid://dwk3o375xq28u" path="res://scenes/levels/level.tscn" id="1_wail4"]
 [ext_resource type="MeshLibrary" uid="uid://bkk033j2u1pvy" path="res://graphics/environment/dungeon/dungeon_col.tres" id="2_srduu"]
@@ -9,6 +9,29 @@
 [ext_resource type="PackedScene" uid="uid://ben46777uu8eu" path="res://graphics/environment/dungeon objects/table.glb" id="7_ohg4i"]
 [ext_resource type="PackedScene" uid="uid://b7wf3jucxaf1v" path="res://graphics/environment/dungeon objects/torch.glb" id="8_b4io3"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wyxho"]
+sky_top_color = Color(0.159897, 0.456037, 0.681333, 1)
+sky_horizon_color = Color(0.566815, 0.643587, 0.707628, 1)
+ground_bottom_color = Color(0.163133, 0.174082, 0.204951, 1)
+ground_horizon_color = Color(0.566815, 0.643587, 0.707628, 1)
+energy_multiplier = 0.8
+
+[sub_resource type="Sky" id="Sky_q0ye3"]
+sky_material = SubResource("ProceduralSkyMaterial_wyxho")
+
+[sub_resource type="Environment" id="Environment_06kf8"]
+background_mode = 1
+background_color = Color(0.284233, 0.308198, 0.317787, 1)
+sky = SubResource("Sky_q0ye3")
+tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.220915, 0.242995, 0.277705, 1)
+fog_density = 0.02
+fog_sky_affect = 0.346
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyxho"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -18,8 +41,17 @@ size = Vector3(6, 4, 1)
 
 [node name="Dungeon" instance=ExtResource("1_wail4")]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_06kf8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 0, 0)
+light_energy = 0.0
+light_angular_distance = 7.5
+shadow_enabled = true
+
 [node name="Player" parent="Entities" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19013, -1.38212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.04051, 1.19013, 5.97765)
 
 [node name="FloorGrid" type="GridMap" parent="Environment" index="0"]
 mesh_library = ExtResource("2_srduu")
@@ -68,6 +100,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0345, 1.02, 16.9283)
 
 [node name="torch" parent="Environment/Objects" index="6" instance=ExtResource("8_b4io3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.84644, 3.17832, 28.5093)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment/Objects/torch" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00390434, 0.832205, 0.31993)
+light_color = Color(0.933333, 0.796078, 0.258824, 1)
+light_energy = 2.5
+light_size = 0.2
+shadow_enabled = true
+distance_fade_begin = 1004.64
 
 [node name="pillar2" parent="Environment/Objects" index="7" instance=ExtResource("4_q0ye3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.084, 1.02, 53.9799)
