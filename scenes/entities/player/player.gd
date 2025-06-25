@@ -18,6 +18,7 @@ var speed_modifier := 1.0
 
 @onready var camera = $CameraController/Camera3D
 @onready var ui = $UI
+@onready var run_particles = $RunParticles
 
 var movement_input := Vector2.ZERO
 var defend := false:
@@ -79,10 +80,11 @@ func _physics_process(delta: float) -> void:
 func move_logic(delta: float) -> void:
 	movement_input = Input.get_vector("left", "right", "forward", "backward").rotated(-camera.global_rotation.y)
 	var velocity_2d = Vector2(velocity.x, velocity.z)
-	var speed = run_speed if Input.is_action_pressed("run") else base_speed
-	speed = defend_speed if defend else speed
+	var is_running: bool = Input.is_action_pressed("run")
 
 	if (movement_input != Vector2.ZERO):
+		var speed = run_speed if is_running else base_speed
+		speed = defend_speed if defend else speed
 		velocity_2d += movement_input * speed * delta * 8.0
 		velocity_2d = velocity_2d.limit_length(speed) * speed_modifier
 		velocity.x = velocity_2d.x
@@ -95,6 +97,8 @@ func move_logic(delta: float) -> void:
 		velocity.x = velocity_2d.x
 		velocity.z = velocity_2d.y
 		skin.set_move_state("Idle")
+
+	run_particles.emitting = is_on_floor() and is_running and movement_input != Vector2.ZERO
 
 
 func jump_logic(delta: float) -> void:
