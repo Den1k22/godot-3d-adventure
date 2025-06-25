@@ -73,6 +73,7 @@ func _physics_process(delta: float) -> void:
 	#if Input.is_action_just_pressed("ui_accept"):
 		#hit()
 	move_and_slide()
+	physics_logic()
 
 
 func move_logic(delta: float) -> void:
@@ -172,3 +173,10 @@ func _on_energy_recovery_timeout() -> void:
 
 func _on_stamina_recovery_timeout() -> void:
 	stamina += 1
+
+
+func physics_logic() -> void:
+	for i in get_slide_collision_count():
+		var collider = get_slide_collision(i).get_collider()
+		if collider is RigidBody3D:
+			collider.apply_central_impulse(-get_slide_collision(i).get_normal())

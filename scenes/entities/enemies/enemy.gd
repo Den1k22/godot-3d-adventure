@@ -39,6 +39,12 @@ func move_to_player(delta):
 		else:
 			velocity = Vector3.ZERO
 			move_state_machine.travel("idle")
+
+		if not is_on_floor():
+			velocity.y -= 2
+		else:
+			velocity.y = 0
+
 		move_and_slide()
 	else:
 		move_state_machine.travel("idle")
