@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://gvub35osd2gs"]
+[gd_scene load_steps=39 format=3 uid="uid://gvub35osd2gs"]
 
 [ext_resource type="PackedScene" uid="uid://dwk3o375xq28u" path="res://scenes/levels/level.tscn" id="1_fl1qg"]
 [ext_resource type="PackedScene" uid="uid://d2p3exb2pd87u" path="res://scenes/levels/overworld_skin.tscn" id="2_l7h5l"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dhsubxkk83ax8" path="res://scenes/levels/castle.tscn" id="26_uftyr"]
 [ext_resource type="PackedScene" uid="uid://bip3if7u8r86l" path="res://scenes/levels/bridge.tscn" id="26_xahul"]
 [ext_resource type="PackedScene" uid="uid://caitwt10udecw" path="res://scenes/vfx/water.tscn" id="31_v6xm7"]
+[ext_resource type="PackedScene" uid="uid://u52kwwlvk8tj" path="res://scenes/vfx/grass_blade.tscn" id="32_n6md7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xahul"]
 sky_top_color = Color(0.167631, 0.469534, 0.699767, 1)
@@ -91,7 +92,7 @@ shadow_opacity = 0.8
 shadow_blur = 3.5
 
 [node name="Player" parent="Entities" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9547, -32.5604, 335.42)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49257, 12.9083, -94.6579)
 
 [node name="Path3D" type="Path3D" parent="Entities" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 51.7854, 0)
@@ -229,7 +230,12 @@ shape = SubResource("BoxShape3D_uftyr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2428, -46.9198, 202.695)
 skeleton = NodePath("")
 
+[node name="Grass" type="Node3D" parent="Environment" index="32"]
+
+[node name="GrassBlade" parent="Environment/Grass" index="0" instance=ExtResource("32_n6md7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.6391, -71.9923)
+
 [node name="Camera3D" type="Camera3D" parent="." index="5"]
-transform = Transform3D(0.937026, -0.0846649, 0.338842, 0, 0.970173, 0.242413, -0.349259, -0.227147, 0.909078, 28.1325, -33.9759, 283.055)
+transform = Transform3D(0.955361, 0.0716188, -0.286629, 0.0890229, 0.855298, 0.510431, 0.28171, -0.513162, 0.810743, -4.50376, 20.3798, -67.5899)
 
 [connection signal="body_entered" from="Environment/castle/Door" to="." method="_on_door_body_entered"]
