@@ -86,7 +86,7 @@ point_count = 8
 [sub_resource type="BoxShape3D" id="BoxShape3D_uftyr"]
 size = Vector3(1.235, 2.595, 2.585)
 
-[sub_resource type="Resource" id="Resource_nfnk8"]
+[sub_resource type="Resource" id="Resource_cff8p"]
 script = ExtResource("36_y2yut")
 amount = 1000
 enabled = true
@@ -95,7 +95,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_nlkbu"]
+[sub_resource type="Resource" id="Resource_nfnk8"]
 script = ExtResource("37_0882p")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(20, 360, 20)
@@ -106,7 +106,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_ysyxr"]
+[sub_resource type="Resource" id="Resource_nlkbu"]
 script = ExtResource("38_ausg6")
 iterations = 3
 offset_step = 0.2
@@ -118,7 +118,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_y2yut"]
+[sub_resource type="Resource" id="Resource_ysyxr"]
 script = ExtResource("39_nfp3b")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -134,9 +134,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_0882p"]
+[sub_resource type="Resource" id="Resource_y2yut"]
 script = ExtResource("34_nlkbu")
-stack = Array[ExtResource("35_ysyxr")]([SubResource("Resource_nfnk8"), SubResource("Resource_nlkbu"), SubResource("Resource_ysyxr"), SubResource("Resource_y2yut")])
+stack = Array[ExtResource("35_ysyxr")]([SubResource("Resource_cff8p"), SubResource("Resource_nfnk8"), SubResource("Resource_nlkbu"), SubResource("Resource_ysyxr")])
 
 [sub_resource type="Resource" id="Resource_g8bsm"]
 script = ExtResource("42_b80c1")
@@ -190,6 +190,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5278, -33.2324, 119.043)
 
 [node name="SkeletonWarior7" parent="Entities" index="9" instance=ExtResource("5_v6xm7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8982, -33.2324, 104.488)
+
+[node name="SkeletonMage2" parent="Entities" index="10" instance=ExtResource("4_k5d7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.61943, 12.7888, -79.6139)
 
 [node name="overworld_environment" parent="Environment" index="0" instance=ExtResource("2_l7h5l")]
 
@@ -300,7 +303,7 @@ skeleton = NodePath("")
 [node name="ProtonScatter" type="Node3D" parent="Environment/Grass" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8352, 13.3022, -63.8158)
 script = ExtResource("33_nfnk8")
-modifier_stack = SubResource("Resource_0882p")
+modifier_stack = SubResource("Resource_y2yut")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 metadata/_custom_type_script = "uid://d01d6ba2vwmyl"
