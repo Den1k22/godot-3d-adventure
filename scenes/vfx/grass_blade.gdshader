@@ -20,10 +20,9 @@ void vertex() {
 	vec3 direction_to_player = player_position - NODE_POSITION_WORLD;
 	float distance_to_player = length(direction_to_player);
 	float falloff = 1.0 - smoothstep(0.0, 1.0, distance_to_player);
-	VERTEX += -direction_to_player * falloff * curve * 1.5;
+	VERTEX += -direction_to_player * falloff * curve * 2.5;
 }
 
 void fragment() {
 	ALBEDO = mix(color, shadow_color * color, UV.y);
 }
-
