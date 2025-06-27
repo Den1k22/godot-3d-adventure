@@ -69,7 +69,7 @@ texture = SubResource("NoiseTexture2D_fi2ea")
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_7mfj1"]
 parameter_name = "WaveHeight"
 default_value_enabled = true
-default_value = 5.0
+default_value = 2.0
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_doc2j"]
 operator = 2
@@ -91,7 +91,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 // Varyings
 varying vec3 var_texture_v;
 
-uniform float WaveHeight = 5.0;
+uniform float WaveHeight = 2.0;
 uniform vec2 Direction;
 uniform sampler2D tex_vtx_4;
 uniform sampler2D depth_tex_frg_9 : hint_depth_texture;
@@ -215,7 +215,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-509.066, -299.921)
+graph_offset = Vector2(-362.917, 4.32996)
 varyings/texture_v = "0,4"
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_7mfj1")
 nodes/vertex/2/position = Vector2(-140, 160)
@@ -239,7 +239,7 @@ nodes/vertex/11/node = SubResource("VisualShaderNodeVec2Parameter_7mfj1")
 nodes/vertex/11/position = Vector2(-1340, 920)
 nodes/vertex/12/node = SubResource("VisualShaderNodeVectorOp_2adyb")
 nodes/vertex/12/position = Vector2(-980, 680)
-nodes/vertex/connections = PackedInt32Array(2, 0, 3, 0, 3, 0, 0, 0, 5, 0, 6, 0, 4, 0, 6, 1, 6, 0, 3, 1, 4, 0, 7, 0, 8, 0, 4, 0, 9, 0, 10, 0, 11, 0, 12, 1, 10, 0, 12, 0, 12, 0, 8, 2)
+nodes/vertex/connections = PackedInt32Array(5, 0, 6, 0, 4, 0, 6, 1, 6, 0, 3, 1, 4, 0, 7, 0, 9, 0, 10, 0, 11, 0, 12, 1, 10, 0, 12, 0, 12, 0, 8, 2, 3, 0, 0, 0, 2, 0, 3, 0, 8, 0, 4, 0)
 nodes/fragment/0/position = Vector2(640, 140)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_7mfj1")
 nodes/fragment/2/position = Vector2(-240, -20)

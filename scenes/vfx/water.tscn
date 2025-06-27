@@ -5,7 +5,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_omcf1"]
 render_priority = 0
 shader = ExtResource("1_gs8q0")
-shader_parameter/WaveHeight = 5.0
 shader_parameter/Direction = Vector2(1, 0)
 shader_parameter/ColorParameter = Color(0.27451, 0.823529, 0.913725, 1)
 
