@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bl781viifncij"]
+
+[ext_resource type="Shader" uid="uid://ptjodayt1ab1" path="res://scenes/vfx/overlay.gdshader" id="1_p0qpy"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_p0qpy")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/energy = 1.0
+shader_parameter/alpha = 0.0

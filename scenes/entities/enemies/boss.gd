@@ -64,9 +64,20 @@ func _on_stop_spinning_area_body_entered(body: Node3D) -> void:
 
 func hit() -> void:
 	if not $Timers/InvulTimer.time_left:
-		print("Boss was hit")
 		$Timers/InvulTimer.start()
 		health -= 1
+		hit_tween()
+
+
+func hit_tween() -> void:
+	var tween = create_tween()
+	tween.tween_method(_hit_effect, 0.0, 0.7, 0.3)
+	tween.tween_method(_hit_effect, 0.7, 0.0, 0.2)
+
+
+func _hit_effect(value: float) -> void:
+	$Skin/Rig/Skeleton3D/Nagonford_Body.material_overlay.set_shader_parameter('color', Color.FIREBRICK)
+	$Skin/Rig/Skeleton3D/Nagonford_Body.material_overlay.set_shader_parameter('alpha', value)
 
 func can_damage(value: bool):
 	can_damage_toggle = value
