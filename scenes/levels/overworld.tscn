@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://gvub35osd2gs"]
+[gd_scene load_steps=55 format=3 uid="uid://gvub35osd2gs"]
 
 [ext_resource type="PackedScene" uid="uid://dwk3o375xq28u" path="res://scenes/levels/level.tscn" id="1_fl1qg"]
 [ext_resource type="PackedScene" uid="uid://d2p3exb2pd87u" path="res://scenes/levels/overworld_skin.tscn" id="2_l7h5l"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dhsubxkk83ax8" path="res://scenes/levels/castle.tscn" id="26_uftyr"]
 [ext_resource type="PackedScene" uid="uid://bip3if7u8r86l" path="res://scenes/levels/bridge.tscn" id="26_xahul"]
 [ext_resource type="PackedScene" uid="uid://caitwt10udecw" path="res://scenes/vfx/water.tscn" id="31_v6xm7"]
+[ext_resource type="AudioStream" uid="uid://cvq05fj2rym4b" path="res://audio/stream.mp3" id="32_nfnk8"]
 [ext_resource type="Script" uid="uid://d01d6ba2vwmyl" path="res://addons/proton_scatter/src/scatter.gd" id="33_nfnk8"]
 [ext_resource type="Script" uid="uid://c3ifoepg3q3ad" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="34_nlkbu"]
 [ext_resource type="Script" uid="uid://bpfof3dmjwdmb" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="35_ysyxr"]
@@ -86,7 +87,7 @@ point_count = 8
 [sub_resource type="BoxShape3D" id="BoxShape3D_uftyr"]
 size = Vector3(1.235, 2.595, 2.585)
 
-[sub_resource type="Resource" id="Resource_cff8p"]
+[sub_resource type="Resource" id="Resource_nfnk8"]
 script = ExtResource("36_y2yut")
 amount = 1000
 enabled = true
@@ -95,7 +96,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_nfnk8"]
+[sub_resource type="Resource" id="Resource_nlkbu"]
 script = ExtResource("37_0882p")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(20, 360, 20)
@@ -106,7 +107,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_nlkbu"]
+[sub_resource type="Resource" id="Resource_ysyxr"]
 script = ExtResource("38_ausg6")
 iterations = 3
 offset_step = 0.2
@@ -118,7 +119,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_ysyxr"]
+[sub_resource type="Resource" id="Resource_y2yut"]
 script = ExtResource("39_nfp3b")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -134,9 +135,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_y2yut"]
+[sub_resource type="Resource" id="Resource_0882p"]
 script = ExtResource("34_nlkbu")
-stack = Array[ExtResource("35_ysyxr")]([SubResource("Resource_cff8p"), SubResource("Resource_nfnk8"), SubResource("Resource_nlkbu"), SubResource("Resource_ysyxr")])
+stack = Array[ExtResource("35_ysyxr")]([SubResource("Resource_nfnk8"), SubResource("Resource_nlkbu"), SubResource("Resource_ysyxr"), SubResource("Resource_y2yut")])
 
 [sub_resource type="Resource" id="Resource_g8bsm"]
 script = ExtResource("42_b80c1")
@@ -157,7 +158,7 @@ shadow_opacity = 0.8
 shadow_blur = 3.5
 
 [node name="Player" parent="Entities" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49257, 12.9083, -94.6579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.1102, 59.0552, 36.6047)
 
 [node name="Path3D" type="Path3D" parent="Entities" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 51.7854, 0)
@@ -298,12 +299,18 @@ shape = SubResource("BoxShape3D_uftyr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2428, -46.9198, 202.695)
 skeleton = NodePath("")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Environment/Water" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4531, 0, 54.9752)
+stream = ExtResource("32_nfnk8")
+autoplay = true
+max_distance = 30.0
+
 [node name="Grass" type="Node3D" parent="Environment" index="32"]
 
 [node name="ProtonScatter" type="Node3D" parent="Environment/Grass" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8352, 13.3022, -63.8158)
 script = ExtResource("33_nfnk8")
-modifier_stack = SubResource("Resource_y2yut")
+modifier_stack = SubResource("Resource_0882p")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 metadata/_custom_type_script = "uid://d01d6ba2vwmyl"

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2220hvs0u357"]
+[gd_scene load_steps=11 format=3 uid="uid://c2220hvs0u357"]
 
 [ext_resource type="Script" uid="uid://df66t8w63hiok" path="res://scenes/entities/player/player.gd" id="1_1hmtu"]
 [ext_resource type="PackedScene" uid="uid://q6ireqhd0sfm" path="res://scenes/entities/player/camera_controller.tscn" id="2_635qg"]
 [ext_resource type="PackedScene" uid="uid://cyhvy57clfhut" path="res://scenes/entities/player/godette_skin.tscn" id="3_58kc7"]
 [ext_resource type="PackedScene" uid="uid://dafraf5sup2hy" path="res://scenes/entities/player/ui.tscn" id="4_nh4ur"]
+[ext_resource type="AudioStream" uid="uid://brog30lvnpr6b" path="res://audio/sword sound.wav" id="5_8akj5"]
+[ext_resource type="AudioStream" uid="uid://q016xqptbrb" path="res://audio/steps.mp3" id="6_bj7e2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1hmtu"]
 
@@ -38,30 +40,30 @@ max_limit_x = -0.2
 [node name="GodetteSkin" parent="." instance=ExtResource("3_58kc7")]
 
 [node name="Skeleton3D" parent="GodetteSkin/Rig" index="0"]
-bones/1/position = Vector3(0, 0.372991, 0)
-bones/4/rotation = Quaternion(-0.550819, -0.0601361, -0.650494, 0.51946)
-bones/5/rotation = Quaternion(2.7539e-08, -5.74717e-08, -0.491413, 0.870927)
-bones/7/rotation = Quaternion(-0.317949, -0.334048, 0.139623, 0.876257)
-bones/8/rotation = Quaternion(0.00154194, 0.00154193, -0.701423, 0.712742)
-bones/9/rotation = Quaternion(-0.610086, 0.0804545, 0.624377, 0.481118)
-bones/10/rotation = Quaternion(1.17011e-08, 6.35438e-08, 0.514782, 0.857321)
-bones/12/rotation = Quaternion(-0.316843, 0.30888, -0.221529, 0.868981)
-bones/13/rotation = Quaternion(0.00448766, 0.0052858, 0.702423, 0.711726)
-bones/15/rotation = Quaternion(0.990412, 0.0834513, 0.0781291, 0.0775588)
-bones/16/rotation = Quaternion(0.369903, 6.27906e-08, -2.56334e-07, 0.92907)
-bones/17/rotation = Quaternion(-0.608323, -0.202318, 0.0721733, 0.764069)
+bones/1/position = Vector3(0, 0.369412, 0)
+bones/4/rotation = Quaternion(-0.551614, -0.0564768, -0.637691, 0.53468)
+bones/5/rotation = Quaternion(3.68097e-08, -6.88317e-08, -0.516214, 0.85646)
+bones/7/rotation = Quaternion(-0.321452, -0.338649, 0.150049, 0.871476)
+bones/8/rotation = Quaternion(0.000970755, 0.000970753, -0.703534, 0.71066)
+bones/9/rotation = Quaternion(-0.610189, 0.0770046, 0.613288, 0.495598)
+bones/10/rotation = Quaternion(1.62346e-08, 4.89285e-08, 0.538553, 0.842592)
+bones/12/rotation = Quaternion(-0.320528, 0.314867, -0.232249, 0.862659)
+bones/13/rotation = Quaternion(0.00304884, 0.00359108, 0.703932, 0.710252)
+bones/15/rotation = Quaternion(0.989607, 0.0837206, 0.0787169, 0.0864399)
+bones/16/rotation = Quaternion(0.393389, 6.18146e-08, -2.65128e-07, 0.919372)
+bones/17/rotation = Quaternion(-0.620651, -0.200927, 0.0764465, 0.75404)
 bones/18/rotation = Quaternion(-2.24322e-06, 0.920156, -0.391552, 5.90891e-07)
-bones/19/rotation = Quaternion(0.992445, -0.0327733, 0.0300456, 0.114351)
-bones/20/rotation = Quaternion(0.416712, -6.02437e-08, 2.89986e-07, 0.909039)
-bones/21/rotation = Quaternion(-0.635354, 0.112887, -0.0212149, 0.763631)
-bones/38/position = Vector3(0.520841, 0.767929, -0.0576374)
-bones/40/position = Vector3(-0.510844, 0.767929, 0.0597369)
+bones/19/rotation = Quaternion(0.991469, -0.0333399, 0.0298156, 0.122427)
+bones/20/rotation = Quaternion(0.437676, -5.78924e-08, 3.04643e-07, 0.899132)
+bones/21/rotation = Quaternion(-0.64671, 0.112498, -0.0232254, 0.754037)
+bones/38/position = Vector3(0.520841, 0.774825, -0.0576374)
+bones/40/position = Vector3(-0.510844, 0.774825, 0.0597369)
 
 [node name="RightHandSlot" parent="GodetteSkin/Rig/Skeleton3D" index="6"]
-transform = Transform3D(0.00317576, -0.163528, -0.986533, -0.999912, -0.0131586, -0.00103676, -0.0128123, 0.98645, -0.163556, -0.490641, 0.620002, 0.106172)
+transform = Transform3D(0.00213928, -0.159162, -0.98725, -0.999958, -0.0089408, -0.00072469, -0.00871209, 0.987211, -0.159175, -0.490359, 0.627945, 0.107839)
 
 [node name="LeftHandSlot" parent="GodetteSkin/Rig/Skeleton3D" index="7"]
-transform = Transform3D(-9.22475e-07, 0.262867, 0.964832, 0.999861, -0.0160026, 0.00436195, 0.0165869, 0.964699, -0.262831, 0.507293, 0.615742, -0.0189654)
+transform = Transform3D(6.77304e-07, 0.262863, 0.964833, 0.999944, -0.0100779, 0.00274596, 0.0104457, 0.96478, -0.262849, 0.507347, 0.623385, -0.0172855)
 
 [node name="InvulTimer" type="Timer" parent="."]
 wait_time = 0.8
@@ -82,6 +84,16 @@ transparency = 0.25
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_nh4ur")
 draw_pass_1 = SubResource("SphereMesh_8akj5")
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="SwordSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("5_8akj5")
+volume_db = -10.0
+
+[node name="StepsSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("6_bj7e2")
+volume_db = -20.0
 
 [connection signal="timeout" from="EnergyRecovery" to="." method="_on_energy_recovery_timeout"]
 [connection signal="timeout" from="StaminaRecovery" to="." method="_on_stamina_recovery_timeout"]

@@ -101,6 +101,11 @@ func move_logic(delta: float) -> void:
 
 	run_particles.emitting = is_on_floor() and is_running and movement_input != Vector2.ZERO
 
+	if is_on_floor() and movement_input:
+		if not $Sounds/StepsSound.playing:
+			$Sounds/StepsSound.playing = true
+	else:
+		$Sounds/StepsSound.playing = false
 
 func jump_logic(delta: float) -> void:
 	if is_on_floor():
@@ -127,6 +132,7 @@ func ability_logic() -> void:
 	if Input.is_action_just_pressed("ability"):
 		if weapon_active:
 			skin.attack()
+			$Sounds/SwordSound.play()
 		else:
 			if energy >= 20:
 				skin.cast_spell()
