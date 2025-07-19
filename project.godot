@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot BotW"
-run/main_scene="uid://dwk3o375xq28u"
+run/main_scene="uid://gvub35osd2gs"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://graphics/icon.png"
 
@@ -114,6 +114,10 @@ ability={
 3d_physics/layer_3="Enemies"
 3d_physics/layer_4="Projectiles"
 3d_physics/layer_5="Items"
+
+[rendering]
+
+renderer/rendering_method="mobile"
 
 [shader_globals]
 

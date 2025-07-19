@@ -15,7 +15,7 @@ void vertex() {
 	float wind = (texture(wind_sampler, world_pos * 0.08 + TIME * 0.05).x - 0.5) * curve;
 	vec3 wind_displacement = vec3(wind) * wind_strength * (1.0 - UV.y);
 	VERTEX += vec3(wind);
-	
+
 	// player displacement
 	vec3 direction_to_player = player_position - NODE_POSITION_WORLD;
 	float distance_to_player = length(direction_to_player);

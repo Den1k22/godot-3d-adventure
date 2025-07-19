@@ -59,13 +59,10 @@ sky = SubResource("Sky_uftyr")
 ambient_light_source = 2
 ambient_light_color = Color(0.968627, 0.835294, 0.858824, 1)
 ambient_light_energy = 0.6
-ssao_enabled = true
-ssil_enabled = true
 glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.509804, 0.87451, 0.890196, 1)
 fog_density = 0.001
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.005
 adjustment_enabled = true
 adjustment_brightness = 1.1
@@ -158,7 +155,7 @@ shadow_opacity = 0.8
 shadow_blur = 3.5
 
 [node name="Player" parent="Entities" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.1102, 59.0552, 36.6047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33371, 13.2484, -115.474)
 
 [node name="Path3D" type="Path3D" parent="Entities" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 51.7854, 0)
@@ -323,8 +320,5 @@ path = "uid://u52kwwlvk8tj"
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
 script = ExtResource("41_r111s")
 shape = SubResource("Resource_g8bsm")
-
-[node name="Camera3D" type="Camera3D" parent="." index="5"]
-transform = Transform3D(0.955361, 0.0716188, -0.286629, 0.0890229, 0.855298, 0.510431, 0.28171, -0.513162, 0.810743, -4.50376, 20.3798, -67.5899)
 
 [connection signal="body_entered" from="Environment/castle/Door" to="." method="_on_door_body_entered"]
